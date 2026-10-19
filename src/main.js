@@ -32,6 +32,7 @@ static getStubConfig(hass, unusedEntities, allEntities) {
     show_temperature: true,
     show_current_condition: true,
     show_attributes: true,
+    show_main_icon: true,
     show_time: true,
     show_time_seconds: true,
     show_hour_leading_zero: true,
@@ -106,6 +107,7 @@ setConfig(config) {
     main_icon_size: 150,
     time_size: 26,
     day_date_size: 15,
+    show_main_icon: true,
     show_feels_like: false,
     show_dew_point: false,
     show_wind_gust_speed: false,
@@ -2062,6 +2064,7 @@ renderMain({ config, sun, weather, temperature, feels_like, description } = this
   const showDescription = config.show_description;
   const showCurrentCondition = config.show_current_condition !== false;
   const showTemperature = config.show_temperature !== false;
+  const showMainIcon = config.show_main_icon !== false;
   const showSeconds = config.show_time_seconds === true;
 
   let roundedTemperature = parseFloat(temperature);
@@ -2151,9 +2154,11 @@ renderMain({ config, sun, weather, temperature, feels_like, description } = this
       </div>
       
       <!-- Center: Large weather icon -->
-      <div class="weather-icon">
-        ${iconHtml}
-      </div>
+      ${showMainIcon ? html`
+        <div class="weather-icon">
+          ${iconHtml}
+        </div>
+      ` : ''}
       
     </div>
   `;

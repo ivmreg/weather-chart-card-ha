@@ -735,6 +735,15 @@ class WeatherChartCardEditor extends LitElement {
           </div>
           <div class="switch-container">
             <ha-switch
+              @change="${(e) => this._valueChanged(e, 'show_main_icon')}"
+              .checked="${this._config.show_main_icon !== false}"
+            ></ha-switch>
+            <label class="switch-label">
+              Show Main Weather Icon
+            </label>
+          </div>
+          <div class="switch-container">
+            <ha-switch
               @change="${(e) => this._valueChanged(e, 'show_attributes')}"
               .checked="${this._config.show_attributes !== false}"
             ></ha-switch>

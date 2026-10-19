@@ -1014,6 +1014,50 @@ var WeatherChartCard = (function () {
       'windy': '바람',
       'windy-variant': '강풍'
     },
+    'zh-Hant': {
+      'tempHi': '氣溫',
+      'tempLo': '夜間氣溫',
+      'precip': '降水量',
+      'feelsLike': '體感溫度',
+      'daily': '逐日',
+      'hourly': '逐時',
+      'auto': '自動',
+      'days': ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+      'months': ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      'units': {
+        'km/h': 'km/h',
+        'm/s': 'm/s',
+        'mph': 'mph',
+        'kn': 'kn',
+        'Bft': 'Bft',
+        'hPa': 'hPa',
+        'mmHg': 'mmHg',
+        'mm': 'mm',
+        'cm': 'cm',
+        'in': 'in',
+        'l/m2': 'l/m2',
+        'kg/m2': 'kg/m2'
+      },
+      'cardinalDirections': [
+        '北', '北北東', '東北', '東北東', '東', '東南東', '東南', '南南東',
+        '南', '南南西', '西南', '西南西', '西', '西北西', '西北', '北北西', '北'
+      ],
+      'clear-night': '晴朗（夜間）',
+      'cloudy': '陰',
+      'exceptional': '極端天氣',
+      'fog': '霧',
+      'hail': '冰雹',
+      'lightning': '雷電',
+      'lightning-rainy': '雷雨',
+      'partlycloudy': '多雲',
+      'pouring': '大雨',
+      'rainy': '雨',
+      'snowy': '雪',
+      'snowy-rainy': '雨夾雪',
+      'sunny': '晴',
+      'windy': '有風',
+      'windy-variant': '強風'
+    },
   };
 
   /**
@@ -1839,6 +1883,15 @@ var WeatherChartCard = (function () {
             ></ha-switch>
             <label class="switch-label">
               Show Current Weather Condition
+            </label>
+          </div>
+          <div class="switch-container">
+            <ha-switch
+              @change="${(e) => this._valueChanged(e, 'show_main_icon')}"
+              .checked="${this._config.show_main_icon !== false}"
+            ></ha-switch>
+            <label class="switch-label">
+              Show Main Weather Icon
             </label>
           </div>
           <div class="switch-container">
@@ -18593,6 +18646,7 @@ var WeatherChartCard = (function () {
       show_temperature: true,
       show_current_condition: true,
       show_attributes: true,
+      show_main_icon: true,
       show_time: true,
       show_time_seconds: true,
       show_hour_leading_zero: true,
@@ -18667,6 +18721,7 @@ var WeatherChartCard = (function () {
       main_icon_size: 150,
       time_size: 26,
       day_date_size: 15,
+      show_main_icon: true,
       show_feels_like: false,
       show_dew_point: false,
       show_wind_gust_speed: false,
@@ -20623,6 +20678,7 @@ var WeatherChartCard = (function () {
     const showDescription = config.show_description;
     const showCurrentCondition = config.show_current_condition !== false;
     const showTemperature = config.show_temperature !== false;
+    const showMainIcon = config.show_main_icon !== false;
     config.show_time_seconds === true;
 
     let roundedTemperature = parseFloat(temperature);
@@ -20712,9 +20768,11 @@ var WeatherChartCard = (function () {
       </div>
       
       <!-- Center: Large weather icon -->
-      <div class="weather-icon">
-        ${iconHtml}
-      </div>
+      ${showMainIcon ? x`
+        <div class="weather-icon">
+          ${iconHtml}
+        </div>
+      ` : ''}
       
     </div>
   `;

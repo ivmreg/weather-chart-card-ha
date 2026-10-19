@@ -146,6 +146,7 @@ units:
 | show_forecast         | boolean | true                     | Show or hide the forecast section (chart, condition icons and wind forecast). Set to `false` for a current-conditions-only card. `show_main` and `show_forecast` cannot both be `false`. |
 | show_temperature      | boolean | true                     | Show or hide the current temperature.                                                              |
 | show_current_condition| boolean | true                     | Show or hide the current weather condition.                                                        |
+| show_main_icon        | boolean | true                     | Show or hide the centered main current-weather icon.                                                |
 | show_attributes       | boolean | true                     | Show or hide a section with attributes such as pressure, humidity, wind direction and speed, etc.  |
 | show_sun              | boolean | true                     | Show or hide the sunset information                                                                |
 | show_time             | boolean | false                    | Show or hide the current time on the card.                                                         |
