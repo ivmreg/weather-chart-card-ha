@@ -20556,6 +20556,10 @@ var WeatherChartCard = (function () {
           position: static;
           flex: 0 0 auto;
           margin-inline-start: auto;
+          line-height: 1;
+        }
+        .compact-main-header .date-text {
+          line-height: 1.2;
         }
         .main span {
           font-size: 18px;
