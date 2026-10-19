@@ -20491,7 +20491,7 @@ var WeatherChartCard = (function () {
           align-items: ${config.title ? 'center' : 'flex-start'};
           justify-content: space-between;
           font-size: ${config.current_temp_size}px;
-          margin-bottom: 10px;
+          margin-bottom: ${config.show_main_icon === false ? '0' : '10px'};
           position: ${config.title ? 'relative' : 'static'};
           ${config.title || config.show_main_icon === false ? '' : `min-height: ${59 + (parseInt(config.main_icon_size, 10) || 150) / 2}px;`}
         }
@@ -20527,7 +20527,7 @@ var WeatherChartCard = (function () {
         }
         .current-time {
           position: absolute;
-          top: 24px;
+          top: ${config.show_main_icon === false ? '0px' : '24px'};
           right: 16px;
           inset-inline-start: initial;
           inset-inline-end: 16px;
