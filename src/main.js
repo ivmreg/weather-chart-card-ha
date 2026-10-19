@@ -1879,7 +1879,7 @@ updateChart({ forecasts, forecastChart } = this) {
           font-size: ${config.current_temp_size}px;
           margin-bottom: 10px;
           position: ${config.title ? 'relative' : 'static'};
-          ${config.title ? '' : `min-height: ${59 + (parseInt(config.main_icon_size, 10) || 150) / 2}px;`}
+          ${config.title || config.show_main_icon === false ? '' : `min-height: ${59 + (parseInt(config.main_icon_size, 10) || 150) / 2}px;`}
         }
         .main .weather-icon {
           position: absolute;
