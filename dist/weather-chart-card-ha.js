@@ -20541,6 +20541,22 @@ var WeatherChartCard = (function () {
           font-size: ${config.day_date_size}px;
           color: var(--secondary-text-color);
         }
+        .compact-main-header {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 8px;
+        }
+        .compact-main-header .main {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .compact-main-header .current-time {
+          position: static;
+          flex: 0 0 auto;
+          margin-inline-start: auto;
+        }
         .main span {
           font-size: 18px;
           color: var(--secondary-text-color);
@@ -20650,8 +20666,15 @@ var WeatherChartCard = (function () {
 
       <ha-card header="${config.title}">
         <div class="card">
-          ${this.renderClock()}
-          ${this.renderMain()}
+          ${config.show_main_icon === false && config.show_main !== false ? x`
+            <div class="compact-main-header">
+              ${this.renderMain()}
+              ${this.renderClock()}
+            </div>
+          ` : x`
+            ${this.renderClock()}
+            ${this.renderMain()}
+          `}
           ${this.renderAttributes()}
           ${showForecast ? x`
             <div class="chart-container">
